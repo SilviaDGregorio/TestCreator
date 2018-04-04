@@ -1,0 +1,36 @@
+###################
+# compiled source #
+###################
+*.com
+*.class
+*.dll
+*.exe
+*.pdb
+*.dll.config
+*.cache
+*.suo
+*.db.config
+*.csproj.user
+!libs/**
+####################
+# VS Upgrade stuff #
+####################
+_UpgradeReport_Files/
+
+###############
+# Directories #
+###############
+[Bb]in/
+[Oo]bj/
+TestResults/
+node_modules/
+logs/
+Published/
+Precompiled/
+packages/
+.vs/
+.axoCover/
+###################
+# Web publish log #
+###################
+*.Publish.xml
