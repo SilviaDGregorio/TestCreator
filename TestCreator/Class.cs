@@ -6,6 +6,11 @@ namespace ConsoleApplication1
 {
     class Class
     {
+        private void Method2(string potato)
+        {
+            Console.WriteLine(potato);
+        }
+
         public bool Method1(string patata)
         {
             if (patata != "")

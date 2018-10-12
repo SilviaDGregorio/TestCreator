@@ -27,15 +27,23 @@ namespace GettingStartedCS
                 Console.WriteLine(directive.Kind());
             }
 
-
-
-           /* IEnumerable<SyntaxNode> methods = root
+            var methods = root
             .DescendantNodes()
-            .OfType<SyntaxNode>().ToList();
+            .OfType<MethodDeclarationSyntax>()
+            .Where(n => n.ParameterList.Parameters.Any())
+            .Where(n=>!n.Modifiers.Any(m=>m.ToString() == "private"))
+            .ToList();
+
+            string testFormat = "        [Test]\r\n        public void Test{0} ()\r\n        {{\r\n            var classs = new {1}();\r\n            classs.{2}({3});\r\n        }}";
+            int i = 0;
             foreach(var method in methods)
             {
-               Console.Out.WriteLine(method.Kind());
-            }*/
+                SyntaxToken className = ((ClassDeclarationSyntax)method.Parent).Identifier;
+                Console.Out.WriteLine(className + "::" + method.Modifiers + " " + method.Identifier + method.ParameterList);
+                Console.Out.WriteLine(string.Format(testFormat, i, className, method.Identifier, "\"test parametro\""));
+                i++;
+            }
+            Console.Read();
         }
     }
 }
